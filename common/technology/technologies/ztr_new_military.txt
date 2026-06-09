@@ -73,7 +73,6 @@ mechanized_infantry = {
 	category = military
 	modifier = {
 		military_formation_mobilization_speed_mult = 0.2
-		unit_combat_unit_type_self_propelled_artillery_offense_mult = 0.05
 		unit_advancement_speed_mult = 0.1
 		military_formation_attrition_risk_mult = -0.2
 		country_military_wages_mult = 0.25
@@ -100,6 +99,7 @@ blitzkrieg = {
 	
 	modifier = {
 		unit_combat_unit_type_modern_mechanized_infantry_offense_mult = 0.1
+		unit_combat_unit_type_self_propelled_artillery_offense_mult = 0.05
 	}
 	
 	unlocking_technologies = {

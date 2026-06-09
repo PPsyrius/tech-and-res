@@ -167,7 +167,7 @@
 				}
 				add = {
 					desc = "ZTR_VERY_SIMILAR_LIBERTY_INDEX"
-					value = 125
+					value = 120
 				}
 			}				
 			else_if = {
@@ -201,7 +201,7 @@
 				}
 				add = {
 					desc = "ZTR_SIMILAR_LIBERTY_INDEX"
-					value = 100
+					value = 90
 				}
 			}
 			if = {
@@ -227,7 +227,7 @@
 				}
 				add = {
 					desc = "ZTR_NEUTRAL_LIBERTY_INDEX"
-					value = 25
+					value = 30
 				}
 			}
 			if = {
@@ -253,7 +253,7 @@
 				}
 				add = {
 					desc = "ZTR_SIMILAR_EQUALITY_INDEX"
-					value = 25
+					value = 30
 				}
 			}
 
@@ -495,7 +495,7 @@
 				}
 				add = {
 					desc = "LOBBY_OPPORTUNITY_BONUS"
-					value = 50
+					value = 25
 				}
 			}
 
@@ -508,7 +508,7 @@
 				}
 				add = {
 					desc = "LOBBY_OPPORTUNITY_BONUS"
-					value = 50
+					value = 25
 				}
 			}
 
@@ -541,7 +541,7 @@
 		}
 
 		propose_score = {
-			value = 1000
+			value = 100
 		}
 
 		use_obligation_chance = {

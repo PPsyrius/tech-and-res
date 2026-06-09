@@ -78,8 +78,14 @@ REPLACE:law_frontier_colonization = {
 		value = 0
 		if = {
 			limit = {
-				ai_has_enact_weight_modifier_journal_entries = yes
+				NOT = { has_institution = institution_colonial_affairs }
+				kai_can_afford_institution = no
 			}
+			add = -1000
+		}
+
+		if = {
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
 		if = {
@@ -87,6 +93,14 @@ REPLACE:law_frontier_colonization = {
 				has_journal_entry = je_taming_the_north
 			}
 			add = 250
+		}
+		if = {
+			limit = { 
+				c:JAP ?= this
+				is_country_type = recognized
+				has_claim = s:STATE_SEOUL
+			}
+			add = 500
 		}
 	}
 	ai_impose_chance = {
@@ -186,8 +200,14 @@ REPLACE:law_colonial_resettlement = {
 		value = 0
 		if = {
 			limit = {
-				ai_has_enact_weight_modifier_journal_entries = yes
+				NOT = { has_institution = institution_colonial_affairs }
+				kai_can_afford_institution = no
 			}
+			add = -1000
+		}
+
+		if = {
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
 		if = {
@@ -295,18 +315,34 @@ REPLACE:law_colonial_exploitation = {
 			navy_size >= 50
 		}
 	}
-	ai_enact_weight_modifier = {
-		#Petitions
+	ai_enact_weight_modifier = { #Petitions
 		value = 0
+
 		if = {
 			limit = {
-				ai_has_enact_weight_modifier_journal_entries = yes
+				NOT = { has_institution = institution_colonial_affairs }
+				kai_can_afford_institution = no
 			}
+			add = -1000
+		}
+
+		if = {
+			limit = { ai_has_enact_weight_modifier_journal_entries = yes }
 			add = 750
 		}
+		
 		if = {
-			limit = {
+			limit = { 
 				has_journal_entry = je_taming_the_north
+			}
+			add = 500
+		}
+		
+		if = {
+			limit = { 
+				c:JAP ?= this
+				is_country_type = recognized
+				has_claim = s:STATE_SEOUL
 			}
 			add = 500
 		}

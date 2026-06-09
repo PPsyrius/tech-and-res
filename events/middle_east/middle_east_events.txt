@@ -592,7 +592,7 @@ ztr_middle_east.5 = {
 	# Refusal
 	option = {
 		name = ztr_middle_east.5.b
-		change_infamy = 50
+		change_infamy = 10
 		ztr_define_israel = yes
 		c:ISR = {
 			add_journal_entry = {

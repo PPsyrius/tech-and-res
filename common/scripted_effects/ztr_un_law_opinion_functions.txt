@@ -2854,7 +2854,7 @@ ztr_un_value_law = {
 			# Slight lean in favor of establishing the institution.
 			change_variable = {
 				name = ztr_un_law_value_objective_considered
-				add = 5
+				add = 10
 			}
 			if = {
 				limit = {
@@ -3050,7 +3050,7 @@ ztr_un_value_law = {
 			# Slight lean in favor of establishing the institution.
 			change_variable = {
 				name = ztr_un_law_value_objective_considered
-				add = 5
+				add = 10
 			}
 			if = {
 				limit = {
@@ -3219,7 +3219,7 @@ ztr_un_value_law = {
 			# Slight lean in favor of establishing the institution.
 			change_variable = {
 				name = ztr_un_law_value_objective_considered
-				add = 5
+				add = 10
 			}
 			change_variable = {
 				name = ztr_un_law_value_objective_considered
@@ -3357,7 +3357,7 @@ ztr_un_value_law = {
 			# Slight lean in favor of establishing the institution.
 			change_variable = {
 				name = ztr_un_law_value_objective_considered
-				add = 5
+				add = 10
 			}
 			change_variable = {
 				name = ztr_un_law_value_objective_considered

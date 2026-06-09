@@ -29,7 +29,7 @@ combat_unit_type_self_propelled_artillery = {
 		military_formation_army_movement_speed_mult = -0.15
 	}
 	unlocking_technologies = {
-		mobile_armor
+		mechanized_infantry
 	}
 	combat_unit_image = {
 		texture = "gfx/unit_illustrations/artillery_spg.dds"

@@ -272,3 +272,5 @@ goods_output_global_electricity_add: "@global_electricity! National Electricity 
 goods_output_global_electricity_add_desc: "The amount of @global_electricity! National Electricity produced by buildings"
 goods_output_global_electricity_mult: "Building @global_electricity! National Electricity output"
 goods_output_global_electricity_mult_desc: "A bonus or penalty to the amount of @global_electricity! National Electricity output produced by buildings"
+goods_input_light_fuel_mult: "@light_fuel! Light Fuel input"
+goods_input_light_fuel_mult_desc: "The amount of @light_fuel! Light Fuel produced by buildings"

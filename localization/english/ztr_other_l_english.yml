@@ -465,5 +465,10 @@ country_ship_type_nuclear_submarine_construction_efficiency_add_desc: "The effic
 country_ship_type_modern_troop_ship_construction_efficiency_add: "$ship_type_modern_troop_ship$ Construction Efficiency"
 country_ship_type_modern_troop_ship_construction_efficiency_add_desc: "The efficiency of [Concept('concept_ship_type', '$ship_type_modern_troop_ship$')] @ship_construction! [concept_ship_construction]"
 
-
 # NEW 1.7
+
+ship_battle_against_ship_type_modern_destroyer_hull_damage_mult: "$ship_type_modern_destroyer$ $ship_hull_damage_mult$"
+ship_battle_against_ship_type_modern_cruiser_hull_damage_mult: "$ship_type_modern_cruiser$ $ship_hull_damage_mult$"
+ship_battle_against_ship_type_modern_battleship_hull_damage_mult: "$ship_type_modern_battleship$ $ship_hull_damage_mult$"
+ship_battle_against_ship_type_nuclear_carrier_hull_damage_mult: "$ship_type_nuclear_carrier$ $ship_hull_damage_mult$"
+ship_battle_against_ship_type_nuclear_submarine_hull_damage_mult: "$ship_type_nuclear_submarine$ $ship_hull_damage_mult$"

@@ -34,9 +34,8 @@ ztr_swiss_neutral_financial_hub = {
 #Japan modifiers
 japan_meiji_modernization = {
 	icon = gfx/interface/icons/timed_modifier_icons/modifier_industry_positive.dds
-	country_construction_goods_cost_mult = -0.15	#0.2
+	country_construction_goods_cost_mult = -0.25	#0.2
 	state_turmoil_effects_mult = -0.1
-	state_construction_mult = 0.1
 }
 
 #It lasts for 100 years after the Meiji Restoration.

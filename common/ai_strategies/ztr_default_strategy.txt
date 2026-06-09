@@ -546,16 +546,16 @@ INJECT:ai_strategy_default = {
 		if = { #Japan also wants Korea
 			limit = {
 				country_has_primary_culture = cu:japanese
-				NOT = {
+				NOR = {
 					has_law_or_variant = law_type:law_isolationism
 					has_law_or_variant = law_type:law_closed_borders
 				}
-				scope:target_country = {
+				scope:target_country ?= {
 					is_country_type = unrecognized
 					country_has_primary_culture = cu:korean
 				}
 			}
-			add = 5
+			add = 10
 		}
 
 		if = { # Britain consolidating South Africa
@@ -1087,7 +1087,7 @@ INJECT:ai_strategy_default = {
 	subsidies = {
 		building_power_plant = wants_to_have
 		building_railway = wants_to_have
-		building_port = must_have
+		building_port = wants_to_have
 		#T&R
 		building_telecommunications_industry = wants_to_have
 		building_fusion_power_plant = wants_to_have
@@ -1135,27 +1135,10 @@ INJECT:ai_strategy_default = {
 				has_port_country = yes
 			}
 		}
-		manowars = {
-			stance = wants_high_supply
-			trigger = {
-				has_technology_researched = admiralty
-				NOT = {
-					has_technology_researched = ironclad_tech
-				}
-				has_port_country = yes
-			}
-		}
 		steamers = {
 			stance = wants_high_supply
 			trigger = {
 				has_technology_researched = gantry_cranes
-				has_port_country = yes
-			}
-		}
-		ironclads = {
-			stance = wants_high_supply
-			trigger = {
-				has_technology_researched = ironclad_tech
 				has_port_country = yes
 			}
 		}

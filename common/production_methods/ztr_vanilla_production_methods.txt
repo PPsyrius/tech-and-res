@@ -122,14 +122,14 @@ REPLACE:pm_scholastic_education = {
 	
 	country_modifiers = {
 		workforce_scaled = { 
-			country_weekly_innovation_add = 1
+			country_weekly_innovation_add = 1.25
 		}
 	}
 	
 	building_modifiers = {
 		workforce_scaled = {
-			goods_input_paper_add = 4 #60
-			goods_input_manzoni_prints_add = 1 #120
+			goods_input_paper_add = 4 #120
+			goods_input_manzoni_prints_add = 1 #60
 			goods_output_business_data_add = 0.5 #-30
 		}	
 	
@@ -1595,8 +1595,11 @@ REPLACE:pm_mobile_warfare_tactics = {
 		soldiers = 75
 		officers = 25
 	}
+	disallowing_laws = {
+		law_warrior_caste
+	}
 	unlocking_technologies = {
-		blitzkrieg
+		mechanized_infantry
 	}
 	building_modifiers = {
 		unscaled = {
@@ -1616,7 +1619,11 @@ REPLACE:pm_mobile_warfare_tactics_conscription = {
 		officers = 25
 	}
 	unlocking_technologies = {
-		blitzkrieg
+		mechanized_infantry
+	}
+	disallowing_laws = {
+		law_peasant_levies
+		law_warrior_caste
 	}
 	building_modifiers = {
 		unscaled = {
