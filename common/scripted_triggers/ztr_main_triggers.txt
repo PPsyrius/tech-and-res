@@ -19,6 +19,13 @@ ztr_decolonization_age_active = {
 }
 
 # Building Triggers
+has_research_modernized = {
+	OR = {
+		has_research_center = yes
+		has_modifier = ztr_modern_universities_linkage
+	}
+}
+
 has_research_center = {
 	any_scope_state = {
 		any_scope_building = {

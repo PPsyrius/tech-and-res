@@ -861,6 +861,14 @@ ztr_communist_china_create_nationalist_front = {
 		}
 		remove_variable = ztr_ccp_nationalist_candidate
 	}
+	# Mark the start of the two-Chinas era so the monthly pulse can drive the
+	# final reckoning and detect its resolution.
+	if = {
+		limit = {
+			exists = c:ZFC
+		}
+		set_global_variable = ztr_two_chinas_reckoning_active
+	}
 }
 
 ztr_two_chinas_prepare_joint_targets = {
@@ -998,11 +1006,6 @@ ztr_two_chinas_launch_joint_offensive = {
 			create_diplomatic_play = {
 				type = dp_annex_war
 				target_country = scope:ztr_two_chinas_chi_target
-				add_war_goal = {
-					holder = c:CHI
-					target_country = scope:ztr_two_chinas_chi_target
-					type = annex_country
-				}
 			}
 		}
 		random_diplomatic_play = {
@@ -1019,11 +1022,6 @@ ztr_two_chinas_launch_joint_offensive = {
 			create_diplomatic_play = {
 				type = dp_annex_war
 				target_country = scope:ztr_two_chinas_zfc_target
-				add_war_goal = {
-					holder = c:ZFC
-					target_country = scope:ztr_two_chinas_zfc_target
-					type = annex_country
-				}
 			}
 		}
 		random_diplomatic_play = {
@@ -1075,11 +1073,6 @@ ztr_two_chinas_launch_joint_offensive_bis = {
 				create_diplomatic_play = {
 					type = dp_annex_war
 					target_country = scope:ztr_two_chinas_second_target
-					add_war_goal = {
-						holder = c:CHI
-						target_country = scope:ztr_two_chinas_second_target
-						type = annex_country
-					}
 				}
 			}
 			random_diplomatic_play = {
@@ -1096,11 +1089,6 @@ ztr_two_chinas_launch_joint_offensive_bis = {
 				create_diplomatic_play = {
 					type = dp_annex_war
 					target_country = scope:ztr_two_chinas_zfc_target
-					add_war_goal = {
-						holder = c:ZFC
-						target_country = scope:ztr_two_chinas_zfc_target
-						type = annex_country
-					}
 				}
 			}
 			random_diplomatic_play = {
@@ -1124,11 +1112,6 @@ ztr_two_chinas_launch_joint_offensive_bis = {
 				create_diplomatic_play = {
 					type = dp_annex_war
 					target_country = scope:ztr_two_chinas_chi_target
-					add_war_goal = {
-						holder = c:CHI
-						target_country = scope:ztr_two_chinas_chi_target
-						type = annex_country
-					}
 				}
 			}
 			random_diplomatic_play = {
@@ -1145,11 +1128,6 @@ ztr_two_chinas_launch_joint_offensive_bis = {
 				create_diplomatic_play = {
 					type = dp_annex_war
 					target_country = scope:ztr_two_chinas_second_target
-					add_war_goal = {
-						holder = c:ZFC
-						target_country = scope:ztr_two_chinas_second_target
-						type = annex_country
-					}
 				}
 			}
 			random_diplomatic_play = {
@@ -1237,6 +1215,151 @@ ztr_communist_china_create_front = {
 			change_tag = CHI
 			ztr_communist_china_adopt_laws_and_loyalist = yes
 			ztr_communist_china_cleanup = yes
+		}
+	}
+}
+
+# Launches the mutual annexation diplomatic play between the two Chinas.
+# ROOT is the initiating China; scope:ztr_two_chinas_rival is the rival China.
+ztr_two_chinas_launch_final_war = {
+	create_diplomatic_play = {
+		type = dp_annex_war
+		target_country = scope:ztr_two_chinas_rival
+	}
+	# Make the annexation mutual: the rival also fights to swallow us whole
+	random_diplomatic_play = {
+		limit = {
+			is_diplomatic_play_type = dp_annex_war
+			initiator = root
+			target = scope:ztr_two_chinas_rival
+		}
+		add_war_goal = {
+			holder = scope:ztr_two_chinas_rival
+			target_country = root
+			type = annex_country
+			primary_demand = yes
+		}
+	}
+	c:CHI = {
+		set_variable = {
+			name = ztr_two_chinas_final_war_cooldown
+			years = 10
+		}
+		change_relations = {
+			country = c:ZFC
+			value = -100
+		}
+		add_loyalists = {
+			value = 0.75
+		}
+		change_infamy = -500
+	}
+	c:ZFC = {
+		set_variable = {
+			name = ztr_two_chinas_final_war_cooldown
+			years = 10
+		}
+		add_loyalists = {
+			value = 0.75
+		}
+		change_infamy = -500
+	}
+}
+
+# Resolve the reckoning once one of the two Chinas has been annexed: the survivor
+# (renamed to CHI if it was the Nationalists) reunifies the country.
+ztr_two_chinas_resolve_unification = {
+	remove_global_variable = ztr_two_chinas_reckoning_active
+	if = {
+		limit = {
+			exists = c:ZFC
+			NOT = {
+				exists = c:CHI
+			}
+		}
+		c:ZFC = {
+			change_tag = CHI
+		}
+	}
+	c:CHI ?= {
+		ztr_two_chinas_unification_victory = yes
+	}
+}
+
+# Run on the surviving, now-unified China (always tag CHI by this point).
+ztr_two_chinas_unification_victory = {
+	save_scope_as = ztr_china_unifier
+	add_modifier = {
+		name = ztr_china_reunified_mandate
+		years = 10
+	}
+	ztr_two_chinas_grant_unification_claims = yes
+	ztr_two_chinas_unification_war = yes
+	if = {
+		limit = {
+			has_variable = ztr_two_chinas_final_war_cooldown
+		}
+		remove_variable = ztr_two_chinas_final_war_cooldown
+	}
+}
+
+# Claims over North China, South China and core Manchuria for scope:ztr_china_unifier.
+ztr_two_chinas_grant_unification_claims = {
+	every_state_region = {
+		limit = {
+			OR = {
+				is_in_geographic_region = geographic_region_north_china
+				is_in_geographic_region = geographic_region_south_china
+				s:STATE_SOUTHERN_MANCHURIA = this
+				s:STATE_NORTHERN_MANCHURIA = this
+				s:STATE_SHENGJING = this
+			}
+		}
+		add_claim = scope:ztr_china_unifier
+	}
+}
+
+# Single reunification war: one diplomatic play with an annexation war goal
+# against every remaining Chinese warlord. The survivor always holds tag CHI here.
+ztr_two_chinas_unification_war = {
+	if = {
+		limit = {
+			any_country = {
+				ztr_is_chinese_warlord = yes
+			}
+		}
+		random_country = {
+			limit = {
+				ztr_is_chinese_warlord = yes
+			}
+			save_scope_as = ztr_unification_primary_target
+		}
+		c:CHI = {
+			create_diplomatic_play = {
+				type = dp_annex_war
+				target_country = scope:ztr_unification_primary_target
+			}
+		}
+		every_country = {
+			limit = {
+				ztr_is_chinese_warlord = yes
+				NOT = {
+					this = scope:ztr_unification_primary_target
+				}
+			}
+			save_scope_as = ztr_unification_extra_target
+			random_diplomatic_play = {
+				limit = {
+					is_diplomatic_play_type = dp_annex_war
+					initiator = c:CHI
+					target = scope:ztr_unification_primary_target
+				}
+				add_war_goal = {
+					holder = c:CHI
+					target_country = scope:ztr_unification_extra_target
+					type = annex_country
+				}
+			}
 		}
 	}
 }

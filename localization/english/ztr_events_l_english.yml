@@ -765,6 +765,10 @@ ztr_communist_china.6.f: "Even rival banners can cast the same shadow over a sma
 ztr_communist_china.6.a: "For now, let us divide the #v Warlords#! before we settle #v China#!."
 ztr_communist_china.6.b: "No pact with them. #v China#! will be won without compromise."
 ztr_communist_china.6.c: "We prefer to attack [SCOPE.sCountry('ztr_two_chinas_second_target').GetName] instead."
+ztr_communist_china.7.t: "The Last Battle for China"
+ztr_communist_china.7.d: "The warlords are spent. Their banners have been folded into one of the two great Chinas, and along the rivers that once divided the holdouts there is now a single, silent frontier between [ROOT.GetCountry.GetName] and [SCOPE.sCountry('ztr_two_chinas_rival').GetName].\n\nThe accord of convenience has outlived its purpose. There are no lesser foes left to partition, only each other. Generals on both sides report that patrols have begun to clash, that artillery is being moved up under cover of night, that the question every Chinese has asked since the fall of the #v Qing#! must finally be answered.\n\nOne #gold_value Mandate#!. One #v China#!. There can be only one."
+ztr_communist_china.7.f: "Two suns cannot share one sky."
+ztr_communist_china.7.a: "Let the matter be settled with fire and steel."
 
 ztr_ottoman_collapse.1.t: "The Eastern Question Reopens"
 ztr_ottoman_collapse.1.d: "The old formulas of [ROOT.GetCountry.GetAdjective] survival have exhausted themselves. Arab notables bargain as though the #v Porte#! were only one claimant among many, officers whisper of palace incompetence, and every European embassy speaks of railways, oil, the Canal, and 'order'.\n\nWe must decide what kind of state will face the coming storm."

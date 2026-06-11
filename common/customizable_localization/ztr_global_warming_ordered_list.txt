@@ -16,6 +16,30 @@ ztr_global_warming_total_pollution_change_type = {
 	}
 }
 
+ztr_global_warming_player_pollution_change_type = {
+	type = country
+	text = {
+		trigger = {
+			has_variable = ztr_country_total_pollution_change_var
+			var:ztr_country_total_pollution_change_var <= 0
+		}
+		localization_key = ztr_global_warming_player_pollution_change_green_loc
+	}
+	text = {
+		trigger = {
+			has_variable = ztr_country_total_pollution_change_var
+			var:ztr_country_total_pollution_change_var > 0
+		}
+		localization_key = ztr_global_warming_player_pollution_change_red_loc
+	}
+	text = {
+		trigger = {
+			NOT = { has_variable = ztr_country_total_pollution_change_var }
+		}
+		localization_key = ztr_global_warming_player_pollution_change_zero_loc
+	}
+}
+
 ztr_global_warming_polluter_rank_none_type = {
 	type = journal_entry
 	text = {

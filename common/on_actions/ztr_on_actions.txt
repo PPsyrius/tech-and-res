@@ -419,6 +419,60 @@ on_monthly_pulse_country = {
 		un_intervention_on_monthly_pulse_country
 		yeet_pops_on_monthly_pulse_country
 		eu_membership_enforcement_on_monthly_pulse_country
+		ztr_two_chinas_reckoning_on_monthly_pulse_country
+	}
+}
+
+# Drives the final reckoning between the two Chinas (replaces the old journal entry):
+# launches the mutual annexation war once the conditions are met, and resolves the
+# reunification as soon as one of the two Chinas has been annexed.
+ztr_two_chinas_reckoning_on_monthly_pulse_country = {
+	effect = {
+		if = {
+			limit = {
+				has_global_variable = ztr_two_chinas_reckoning_active
+			}
+			# One of the two Chinas has fallen: resolve the unification (runs once).
+			if = {
+				limit = {
+					NOT = {
+						AND = {
+							exists = c:CHI
+							exists = c:ZFC
+						}
+					}
+				}
+				ztr_two_chinas_resolve_unification = yes
+			}
+			# Both still stand: Communist China's own pulse launches the final war.
+			else_if = {
+				limit = {
+					this = c:CHI
+					ztr_two_chinas_final_war_possible = yes
+				}
+				if = {
+					limit = {
+						c:ZFC = {
+							is_player = yes
+						}
+					}
+					c:ZFC = {
+						trigger_event = {
+							id = ztr_communist_china.7
+							popup = yes
+						}
+					}
+				}
+				else = {
+					c:CHI = {
+						trigger_event = {
+							id = ztr_communist_china.7
+							popup = yes
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -514,6 +568,54 @@ yeet_pops_on_monthly_pulse_country = {
 	events = {
 		yeet_pops.1
 		yeet_pops.2
+	}
+}
+
+#####################################################################
+### DIPLOMATIC PLAY ON_ACTION DEFINITIONS ###
+#####################################################################
+on_diplo_play_war_start = {
+	on_actions = {
+		ztr_two_chinas_on_diplo_play_war_start
+	}
+}
+
+# Root = Diplomatic Play. When the two-Chinas reckoning escalates from a diplomatic
+# play into an actual war, steel the resolve of both sides with a one-off +50 war
+# support boost. Gated on the communist-front era flag so the Renaissance secession
+# plays are left untouched.
+ztr_two_chinas_on_diplo_play_war_start = {
+	effect = {
+		if = {
+			limit = {
+				has_global_variable = ztr_two_chinas_reckoning_active
+				is_diplomatic_play_type = dp_annex_war
+				exists = c:CHI
+				exists = c:ZFC
+				OR = {
+					AND = {
+						initiator = c:CHI
+						target = c:ZFC
+					}
+					AND = {
+						initiator = c:ZFC
+						target = c:CHI
+					}
+				}
+			}
+			c:CHI = {
+				random_scope_war = {
+					add_war_war_support = {
+						target = c:CHI
+						value = 50
+					}
+					add_war_war_support = {
+						target = c:ZFC
+						value = 50
+					}
+				}
+			}
+		}
 	}
 }
 

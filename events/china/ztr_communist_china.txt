@@ -798,3 +798,41 @@ ztr_communist_china.6 = {
 		}
 	}
 }
+
+# The final reckoning: with the warlords spent, the two Chinas turn upon each other.
+ztr_communist_china.7 = {
+	type = country_event
+	placement = ROOT
+	duration = 1
+	title = ztr_communist_china.7.t
+	desc = ztr_communist_china.7.d
+	flavor = ztr_communist_china.7.f
+	event_image = {
+		video = "chinese_city"
+	}
+	on_created_soundeffect = "event:/SFX/UI/Alerts/event_appear"
+	icon = "gfx/interface/icons/event_icons/event_military.dds"
+	trigger = {
+		ztr_two_chinas_final_war_possible = yes
+	}
+	immediate = {
+		if = {
+			limit = {
+				c:CHI = root
+			}
+			c:ZFC = {
+				save_scope_as = ztr_two_chinas_rival
+			}
+		}
+		else = {
+			c:CHI = {
+				save_scope_as = ztr_two_chinas_rival
+			}
+		}
+		ztr_two_chinas_launch_final_war = yes
+	}
+	option = {
+		name = ztr_communist_china.7.a
+		default_option = yes
+	}
+}

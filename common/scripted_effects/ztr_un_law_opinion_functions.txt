@@ -959,11 +959,11 @@ ztr_un_value_law_prepare_country_context = {
 	}
 	change_variable = {
 		name = ztr_un_value_law_literacy_balance
-		multiply = 20
+		multiply = 10 #20
 	}
 	change_variable = {
 		name = ztr_un_value_law_literacy_balance
-		add = -10
+		add = -5 #10
 	}
 	set_variable = {
 		name = ztr_un_value_law_literacy_inverse_balance
@@ -979,7 +979,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_development_balance
-			value = -10
+			value = -5 #-10
 		}
 	}
 	else_if = {
@@ -988,7 +988,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_development_balance
-			value = -8
+			value = -4 #-8
 		}
 	}
 	else_if = {
@@ -997,7 +997,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_development_balance
-			value = -5
+			value = -2 #-5
 		}
 	}
 	else_if = {
@@ -1006,7 +1006,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_development_balance
-			value = -2
+			value = -1 #-2
 		}
 	}
 	else_if = {
@@ -1015,7 +1015,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_development_balance
-			value = 3
+			value = 2 #3
 		}
 	}
 	else_if = {
@@ -1024,7 +1024,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_development_balance
-			value = 6
+			value = 3 #6
 		}
 	}
 	else_if = {
@@ -1033,7 +1033,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_development_balance
-			value = 8
+			value = 4 #8
 		}
 	}
 	else_if = {
@@ -1042,7 +1042,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_development_balance
-			value = 10
+			value = 5 #10
 		}
 	}
 	set_variable = {
@@ -1059,7 +1059,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_demographic_balance
-			value = -10
+			value = -5 #-10
 		}
 	}
 	else_if = {
@@ -1068,7 +1068,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_demographic_balance
-			value = -8
+			value = -4 #-8
 		}
 	}
 	else_if = {
@@ -1077,7 +1077,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_demographic_balance
-			value = -6
+			value = -3 #-6
 		}
 	}
 	else_if = {
@@ -1086,7 +1086,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_demographic_balance
-			value = -3
+			value = -1 #-3
 		}
 	}
 	else_if = {
@@ -1095,7 +1095,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_demographic_balance
-			value = 3
+			value = 2 #3
 		}
 	}
 	else_if = {
@@ -1104,7 +1104,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_demographic_balance
-			value = 6
+			value = 3 #6
 		}
 	}
 	else_if = {
@@ -1113,7 +1113,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_demographic_balance
-			value = 8
+			value = 4 #8
 		}
 	}
 	else_if = {
@@ -1122,7 +1122,7 @@ ztr_un_value_law_prepare_country_context = {
 		}
 		set_variable = {
 			name = ztr_un_value_law_demographic_balance
-			value = 10
+			value = 5 #10
 		}
 	}
 	set_variable = {
@@ -3315,7 +3315,7 @@ ztr_un_value_law = {
 			}
 			if = {
 				limit = {
-					has_research_center = yes
+					has_research_modernized = yes
 				}
 				change_variable = {
 					name = ztr_un_law_value_objective_considered
@@ -3357,7 +3357,7 @@ ztr_un_value_law = {
 			# Slight lean in favor of establishing the institution.
 			change_variable = {
 				name = ztr_un_law_value_objective_considered
-				add = 10
+				add = 15 #10 UNESCO is a cultural institution
 			}
 			change_variable = {
 				name = ztr_un_law_value_objective_considered
@@ -3373,7 +3373,7 @@ ztr_un_value_law = {
 			}
 			if = {
 				limit = {
-					has_research_center = yes
+					has_research_modernized = yes
 				}
 				change_variable = {
 					name = ztr_un_law_value_objective_considered
@@ -4262,7 +4262,7 @@ ztr_un_value_law = {
 				any_rival_country = {
 					OR = {
 						literacy_rate >= 0.5
-						has_research_center = yes
+						has_research_modernized = yes
 						has_technology_researched = international_organizations
 					}
 				}
@@ -4271,7 +4271,7 @@ ztr_un_value_law = {
 				limit = {
 					OR = {
 						literacy_rate >= 0.5
-						has_research_center = yes
+						has_research_modernized = yes
 						has_technology_researched = international_organizations
 					}
 				}
@@ -4291,7 +4291,7 @@ ztr_un_value_law = {
 				any_rival_country = {
 					OR = {
 						literacy_rate >= 0.5
-						has_research_center = yes
+						has_research_modernized = yes
 						has_technology_researched = international_organizations
 					}
 				}
@@ -4300,7 +4300,7 @@ ztr_un_value_law = {
 				limit = {
 					OR = {
 						literacy_rate >= 0.5
-						has_research_center = yes
+						has_research_modernized = yes
 						has_technology_researched = international_organizations
 					}
 				}

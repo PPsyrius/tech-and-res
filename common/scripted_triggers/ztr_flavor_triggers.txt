@@ -150,3 +150,53 @@ ztr_two_chinas_joint_offensive_possible = {
 		}
 	}
 }
+
+# Final reckoning between the two Chinas: triggers once at least one of the two
+# Chinas has cleared every adjacent Chinese warlord, both are at peace and free to
+# launch aggressive plays, and the 10-year cooldown has elapsed.
+ztr_two_chinas_final_war_possible = {
+	exists = c:CHI
+	exists = c:ZFC
+	c:CHI = {
+		NOR = {
+			is_at_war = yes
+			has_diplomatic_play = yes
+			has_variable = ztr_two_chinas_final_war_cooldown
+		}
+		aggressive_diplomatic_plays_permitted = yes
+	}
+	c:ZFC = {
+		NOR = {
+			is_at_war = yes
+			has_diplomatic_play = yes
+		}
+		aggressive_diplomatic_plays_permitted = yes
+	}
+	# At least one of the two Chinas no longer borders any Chinese warlord,
+	# or only a single holdout warlord still borders either China
+	OR = {
+		NOT = {
+			any_country = {
+				ztr_is_chinese_warlord = yes
+				is_adjacent_to_country = c:CHI
+			}
+		}
+		NOT = {
+			any_country = {
+				ztr_is_chinese_warlord = yes
+				is_adjacent_to_country = c:ZFC
+			}
+		}
+		# 0 or 1 Chinese warlords border either China
+		NOT = {
+			any_country = {
+				count > 1
+				ztr_is_chinese_warlord = yes
+				OR = {
+					is_adjacent_to_country = c:CHI
+					is_adjacent_to_country = c:ZFC
+				}
+			}
+		}
+	}
+}

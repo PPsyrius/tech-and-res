@@ -444,6 +444,13 @@ the_future_of_china_technoconfucian_outcome_modifier = {
 	state_standard_of_living_add = 0.5
 }
 
+# Awarded to the China that wins the final reckoning and reunifies the country
+ztr_china_reunified_mandate = {
+	icon = "gfx/interface/icons/timed_modifier_icons/modifier_fist_positive.dds"
+	country_legitimacy_base_add = 10
+	unit_offense_mult = 0.25
+}
+
 ztr_ccp_repression_campaign = {
 	icon = "gfx/interface/icons/timed_modifier_icons/modifier_cop_negative.dds"
 	interest_group_ig_trade_unions_pop_attraction_mult = -0.15
